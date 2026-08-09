@@ -1,2 +1,0 @@
-# IgnisTrace
-Ignis trace
