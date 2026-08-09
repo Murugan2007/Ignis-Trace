@@ -1,4 +1,4 @@
-# 🌲 Ignis-Trace
+#  Ignis-Trace
 
 **An AI-powered "Black Box" for forests — catching wildfire threats at the ignition phase, before they become a satellite-visible disaster.**
 
@@ -26,7 +26,7 @@ Wildfires are typically detected once smoke plumes are already visible from orbi
 
 ## Hardware & Architecture
 
-### 🧠 Arduino Uno Q — Edge AI Core
+### Arduino Uno Q — Edge AI Core
 The project is built around the Uno Q's dual-core architecture:
 - **Qualcomm MPU** — runs the lightweight Edge Impulse audio classification model, doing the heavy lifting of real-time inference
 - **STM32 MCU** — handles low-latency sensor polling and real-time I/O alongside the AI core
@@ -37,20 +37,20 @@ The project is built around the Uno Q's dual-core architecture:
 
 > **Note:** An earlier revision of this design included a VL53L5CX Time-of-Flight depth sensor for spatial/structural anomaly tracking. This has been **dropped** — acoustic classification alone covers the detection use case without the added complexity.
 
-### 🌡️ Thermal Sensing — Budget-Conscious Design
+###  Thermal Sensing — Budget-Conscious Design
 The original plan called for a thermal camera array (AMG8833 or higher resolution) to image heat signatures directly. Due to budget constraints, this build substitutes:
 - **MLX90614** single-point IR temperature sensor
 - Mounted on a **2-axis pan-tilt servo bracket**, sweeping the sensor across the field of view to build up a scanned thermal picture point-by-point instead of capturing it all at once
 
 This trades scan speed and resolution for cost. **If budget allows, swap in an actual thermal camera (AMG8833 or better)** — the pan-tilt + MLX90614 rig is a workaround, not the ideal, and the rest of the system doesn't care which one feeds it data.
 
-### 📡 Node Communication — LoRa Mesh
+###  Node Communication — LoRa Mesh
 - Each field node carries a LoRa radio and can talk to **other nodes** as well as directly to the **base receiver**
 - Payloads are intentionally minimal — short, low-bandwidth alert packets (event type, confidence, timestamp), not raw sensor streams
 - **Base receiver:** an ESP32 + LoRa module connected to a laptop/PC
 - **Base station software:** a dashboard interface that plots incoming alerts on a map based on each node's known placement
 
-### 🖨️ Enclosure
+###  Enclosure
 A custom biomimetic 3D-printed enclosure, designed to blend into the forest environment and protect the electronics from the elements.
 
 ---
@@ -63,13 +63,13 @@ The Uno Q's split personality — a real MPU for AI inference paired with an MCU
 
 ## Current Status
 
-- 🔊 Microphone: **INMP441**, Edge Impulse audio classification model in progress
-- 🚫 ToF sensor: **removed from scope**
-- 🌡️ Thermal sensing: **MLX90614 on 2-axis pan-tilt servo** (budget substitute for a proper thermal camera)
-- 📡 LoRa mesh communication (node ↔ node ↔ ESP32 base receiver): **in design**
-- 🖥️ Base-station mapping interface: **planned**
-- 🛠️ Prototyping in Arduino App Lab, bridging Python-based TinyML with real-time C++ sensor polling
-- 🖨️ Custom enclosure: **in design for 3D printing**
+-  Microphone: **INMP441**, Edge Impulse audio classification model in progress
+-  ToF sensor: **removed from scope**
+-  Thermal sensing: **MLX90614 on 2-axis pan-tilt servo** (budget substitute for a proper thermal camera)
+-  LoRa mesh communication (node ↔ node ↔ ESP32 base receiver): **in design**
+-   Base-station mapping interface: **planned**
+-  Prototyping in Arduino App Lab, bridging Python-based TinyML with real-time C++ sensor polling
+-  Custom enclosure: **in design for 3D printing**
 
 ---
 
