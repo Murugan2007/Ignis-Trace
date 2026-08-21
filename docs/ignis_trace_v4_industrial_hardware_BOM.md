@@ -1,6 +1,6 @@
 # Ignis-Trace — v4: Industrial Deployment Reference (Hardware BOM + Architecture)
 
-> **Status: Reference document only — not built, not costed for procurement, not part of the contest submission.**
+> **Status: Reference document only, not built, not costed for procurement, not part of the contest submission.**
 > This describes what Ignis-Trace would look like as an actual field-deployable industrial product, with real industrial-grade components swapped in for the hobby parts used in the contest build. It exists in the repo as a scaling/roadmap reference, not a build target.
 
 ---
@@ -9,7 +9,7 @@
 
 v2 and v3 upgraded the **fusion logic** (weighted rules → probabilistic fusion + fault tolerance) while keeping the same INMP441 microphone and MLX90614 pan-tilt rig. That's a legitimate software roadmap.
 
-Going *industrial* is a different axis entirely — the hobby sensors themselves become the bottleneck, regardless of how smart the fusion logic is:
+Going *industrial* is a different axis entirely, the hobby sensors themselves become the bottleneck, regardless of how smart the fusion logic is:
 
 | Limitation of the hobby build | Why it blocks real deployment |
 |---|---|
@@ -27,7 +27,7 @@ This document swaps each of those for the industrial-grade equivalent.
 
 | Subsystem | Hobby Build (Contest) | Industrial Equivalent | Why |
 |---|---|---|---|
-| **Thermal sensing** | MLX90614 + pan-tilt servo | **FLIR Lepton 3.5** or **FLIR Boson** thermal core (radiometric, 160×120 or 320×256) | Full-frame thermal image instead of a single scanned point — no moving parts, real-time coverage, actual radiometric temperature data usable for fire-precursor detection |
+| **Thermal sensing** | MLX90614 + pan-tilt servo | **FLIR Lepton 3.5** or **FLIR Boson** thermal core (radiometric, 160×120 or 320×256) | Full-frame thermal image instead of a single scanned point, no moving parts, real-time coverage, actual radiometric temperature data usable for fire-precursor detection |
 | **Acoustic sensing** | INMP441 breakout | **Industrial MEMS mic array** (e.g., weatherproof beamforming array, IP-rated) or a ruggedized shotgun/directional acoustic sensor | Directional detection (bearing to threat, not just presence), weatherproof housing rated for continuous outdoor use |
 | **Compute** | Arduino UNO Q (Qualcomm MPU + STM32 MCU dev board) | **Uno Q architecture retained** — STM32 real-time MCU stays as-is; only the **Qualcomm MPU module is swapped for an industrial-temp-rated / long-lifecycle equivalent SOM** (e.g. an industrial-grade Qualcomm QCS-series module on a custom carrier, in place of the consumer dev-board MPU) | Keeps the proven dual-core split (AI inference + real-time I/O) that the whole project is built around, while addressing the actual weak point of a hobby dev board: the MPU side isn't rated for outdoor temperature swings or guaranteed long-term availability. No need to redesign the MCU/sensor-interfacing side at all |
 | **Node-to-node / node-to-gateway radio** | Raw point-to-point LoRa | **LoRaWAN** with a certified module (e.g., RAK/Semtech LoRaWAN stack) talking to a proper **LoRaWAN gateway** (e.g., RAK7268 or equivalent, or carrier network like The Things Network / a private gateway) | Standardized network layer: device provisioning, encryption, adaptive data rate, and the ability to scale to dozens/hundreds of nodes without a custom protocol |
