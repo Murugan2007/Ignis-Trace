@@ -99,13 +99,15 @@ The `firmware/` directory tracks the project's design evolution — not just the
 | **v1 — Original Design** | AMG8833 thermal camera + VL53L5CX ToF | — (single-sensor thresholding) | Reference only — superseded by budget constraints |
 | **Current — Contest Build** | INMP441 mic + MLX90614 on 2-axis pan-tilt | Independent detection per sensor | ✅ In active development for submission |
 | **v2 — Fusion Upgrade** | INMP441 + MLX90614 pan-tilt | Decision-level (weighted-rule) fusion | 🗺️ Designed, not built — post-contest roadmap |
-| **v3 — Industrial Reference** | Same sensors, health-aware | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog | 🗺️ Architecture skeleton — scaling reference, unbuilt |
+| **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog | 🗺️ Architecture skeleton — scaling reference, unbuilt |
+| **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN + Jetson-class edge module | v3 fusion philosophy, rebuilt against real sensor data | 📄 BOM + architecture document — deployment path, not built |
 
-**Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what budget and time forced (current build), and what a production-grade version would need to add (v2 → v3). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
+**Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what budget and time forced (current build), and what a production-grade version would need — first in logic (v3), then in the actual physical hardware it would run on (v4). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
 
 - **v1** restores the original AMG8833 + VL53L5CX sensor stack for anyone who wants to reproduce the design with a real thermal camera.
 - **v2** introduces decision-level sensor fusion: high-confidence audio alone alerts; medium-confidence audio *corroborated* by a thermal anomaly also alerts; a thermal spike alone only logs (a single-point IR sensor is too noisy to trust on its own).
 - **v3** goes further — replacing fixed thresholds with a Bayesian posterior-probability model, adding per-sensor health/confidence tracking, automatic baseline recalibration, retry-with-backoff LoRa delivery, and a watchdog for unattended field reliability.
+- **v4** goes past code entirely — a BOM and architecture document swapping every hobby component for its real industrial-grade equivalent (FLIR thermal core, industrial mic array, LoRaWAN gateway, ruggedized edge compute, solar/LiFePO4 power, IP66/67 enclosure), showing what an actual field-deployable product beyond the contest prototype would require.
 
 ---
 
@@ -115,13 +117,15 @@ The `firmware/` directory tracks the project's design evolution — not just the
 ignis-trace/
 ├── README.md
 ├── LICENSE
-└── firmware/
-    ├── v1_original/
-    │   └── ignis_trace_v1_original.ino        # AMG8833 + VL53L5CX
-    ├── v2_fusion_upgrade/
-    │   └── ignis_trace_v2_fusion_upgrade.ino  # decision-level fusion
-    └── v3_industrial_fusion/
-        └── ignis_trace_v3_industrial_fusion.ino  # probabilistic fusion + health/fault tolerance
+├── firmware/
+│   ├── v1_original/
+│   │   └── ignis_trace_v1_original.ino        # AMG8833 + VL53L5CX
+│   ├── v2_fusion_upgrade/
+│   │   └── ignis_trace_v2_fusion_upgrade.ino  # decision-level fusion
+│   └── v3_industrial_fusion/
+│       └── ignis_trace_v3_industrial_fusion.ino  # probabilistic fusion + health/fault tolerance
+└── docs/
+    └── v4_industrial_hardware_BOM.md          # real industrial component BOM + architecture
 ```
 
 > The current contest build (INMP441 + MLX90614 pan-tilt) lives at the project root / main firmware sketch as development progresses.
@@ -139,6 +143,7 @@ ignis-trace/
 - [ ] Field test with multiple nodes
 - [ ] Post-contest: build and validate v2 decision-level fusion
 - [ ] Long-term: implement v3 industrial-grade fusion architecture
+- [ ] Long-term: procure and prototype v4 industrial hardware (FLIR thermal core, LoRaWAN, ruggedized enclosure)
 
 ---
 
