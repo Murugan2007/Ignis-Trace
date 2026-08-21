@@ -23,9 +23,9 @@
 
 ## The Problem
 
-Wildfires are typically detected once smoke plumes are already visible from orbit — by then, the fire is established and containment is a much harder fight. Most detection systems are top-down (satellite, aerial) and reactive.
+Wildfires are typically detected once smoke plumes are already visible from orbit, by then, the fire is established and containment is a much harder fight. Most detection systems are top-down (satellite, aerial) and reactive.
 
-**Ignis-Trace flips this.** It's a bottom-up, edge-computing sentry node deployed *in* the forest that listens and watches for the precursors of fire — illegal logging machinery, electrical arcing, human intrusion — and logs the evidence before things spiral out of control.
+**Ignis-Trace flips this.** It's a bottom-up, edge-computing sentry node deployed *in* the forest that listens and watches for the precursors of fire , illegal logging machinery, electrical arcing, human intrusion, and logs the evidence before things spiral out of control.
 
 ---
 
@@ -50,7 +50,7 @@ The project is built around the Uno Q's dual-core architecture:
 
 ###  Acoustic Sensing
 - **Microphone:** INMP441 (I2S digital MEMS mic)
-- **Model pipeline:** Edge Impulse — trained to separate ambient forest audio from threat signatures like machinery and electrical arcing
+- **Model pipeline:** Edge Impulse trained to separate ambient forest audio from threat signatures like machinery and electrical arcing
 
 > **Note:** An earlier revision of this design included a VL53L5CX Time-of-Flight depth sensor for spatial/structural anomaly tracking. This has been **dropped** — acoustic classification alone covers the detection use case without the added complexity.
 
@@ -74,7 +74,7 @@ A custom biomimetic 3D-printed enclosure, designed to blend into the forest envi
 
 ## Why the Uno Q?
 
-The Uno Q's split personality — a real MPU for AI inference paired with an MCU for deterministic sensor I/O — is exactly the combination this project needs: run a real TinyML model *and* keep tight, low-latency control over sensors and radio, on a single board.
+The Uno Q's split personality — a real MPU for AI inference paired with an MCU for deterministic sensor I/O, is exactly the combination this project needs: run a real TinyML model *and* keep tight, low-latency control over sensors and radio, on a single board.
 
 ---
 
@@ -92,7 +92,7 @@ The Uno Q's split personality — a real MPU for AI inference paired with an MCU
 
 ## Firmware Versions
 
-The `firmware/` directory tracks the project's design evolution — not just the version submitted to the contest, but the original plan and where it's headed next. Each is a standalone reference; only the current build was field-tested within the contest timeline.
+The `firmware/` directory tracks the project's design evolution, not just the version submitted to the contest, but the original plan and where it's headed next. Each is a standalone reference; only the current build was field-tested within the contest timeline.
 
 | Version | Sensors | Fusion Method | Status |
 |---|---|---|---|
@@ -102,7 +102,7 @@ The `firmware/` directory tracks the project's design evolution — not just the
 | **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog |  Architecture skeleton ,scaling reference, unbuilt |
 | **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN + Jetson-class edge module | v3 fusion philosophy, rebuilt against real sensor data |  BOM + architecture document — deployment path, not built |
 
-**Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what budget and time forced (current build), and what a production-grade version would need — first in logic (v3), then in the actual physical hardware it would run on (v4). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
+**Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what budget and time forced (current build), and what a production-grade version would need, first in logic (v3), then in the actual physical hardware it would run on (v4). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
 
 - **v1** restores the original AMG8833 + VL53L5CX sensor stack for anyone who wants to reproduce the design with a real thermal camera.
 - **v2** introduces decision-level sensor fusion: high-confidence audio alone alerts; medium-confidence audio *corroborated* by a thermal anomaly also alerts; a thermal spike alone only logs (a single-point IR sensor is too noisy to trust on its own).
