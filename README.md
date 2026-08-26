@@ -1,4 +1,4 @@
-# 🌲 Ignis-Trace
+#  Ignis-Trace
 
 **An AI-powered "Black Box" for forests — catching wildfire threats at the ignition phase, before they become a satellite-visible disaster.**
 
@@ -107,13 +107,13 @@ The Uno Q's split personality — a real MPU for AI inference paired with an MCU
 
 ## Current Status
 
-- 🧪 Gas sensing: **BME680**, ambient VOC polling on the STM32 side
-- 🌡️ Thermal sensing: **MLX90614** on a stepped micro-servo pyrometer sweep (triggered by gas-stage escalation)
-- 🔊 Acoustic verification: **INMP441** + Edge Impulse audio classification on the QRB2210 MPU, in progress
-- 🖥️ **8×13 LED matrix** status display (baseline green checkmark / red alert): in design
-- 📡 **433 MHz SX1276 LoRa** → ESP32 gateway → Streamlit dashboard pipeline: in design
-- 🖨️ **IP65-rated enclosure**, tree-mountable: in design for 3D printing
-- 🛠️ Prototyping in Arduino App Lab, bridging Python-based TinyML (Qualcomm MPU) with real-time C++ sensor/servo control (STM32) via `Arduino_RouterBridge`
+-  Gas sensing: **BME680**, ambient VOC polling on the STM32 side
+-  Thermal sensing: **MLX90614** on a stepped micro-servo pyrometer sweep (triggered by gas-stage escalation)
+-  Acoustic verification: **INMP441** + Edge Impulse audio classification on the QRB2210 MPU, in progress
+-  **8×13 LED matrix** status display (baseline green checkmark / red alert): in design
+-  **433 MHz SX1276 LoRa** → ESP32 gateway → Streamlit dashboard pipeline: in design
+-  **IP65-rated enclosure**, tree-mountable: in design for 3D printing
+-  Prototyping in Arduino App Lab, bridging Python-based TinyML (Qualcomm MPU) with real-time C++ sensor/servo control (STM32) via `Arduino_RouterBridge`
 
 ---
 
@@ -124,10 +124,10 @@ The `firmware/` directory tracks the project's design evolution — not just the
 | Version | Sensors | Fusion Method | Status |
 |---|---|---|---|
 | **v1 — Original Design** | AMG8833 thermal camera + VL53L5CX ToF | — (single-sensor thresholding) | Reference only — superseded by budget constraints |
-| **Current — Contest Build** | BME680 gas + MLX90614 stepped pyrometer + INMP441 mic, on Uno Q | 3-tier cascade (Gas → Thermal → Audio) | ✅ In active development for submission |
-| **v2 — Fusion Upgrade** | Same current-build sensors | Decision-level (weighted-rule) fusion, generalized beyond the fixed 3-tier cascade | 🗺️ Designed, not built — post-contest roadmap |
-| **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware, Uno Q retained | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog | 🗺️ Architecture skeleton — scaling reference, unbuilt |
-| **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN, Uno Q architecture retained (MPU module swapped only) | v3 fusion philosophy, rebuilt against real sensor data | 📄 BOM + architecture document — deployment path, not built |
+| **Current — Contest Build** | BME680 gas + MLX90614 stepped pyrometer + INMP441 mic, on Uno Q | 3-tier cascade (Gas → Thermal → Audio) |  In active development for submission |
+| **v2 — Fusion Upgrade** | Same current-build sensors | Decision-level (weighted-rule) fusion, generalized beyond the fixed 3-tier cascade |  Designed, not built — post-contest roadmap |
+| **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware, Uno Q retained | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog |  Architecture skeleton — scaling reference, unbuilt |
+| **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN, Uno Q architecture retained (MPU module swapped only) | v3 fusion philosophy, rebuilt against real sensor data |  BOM + architecture document — deployment path, not built |
 
 **Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what the actual contest submission does (current build's 3-tier cascade), and what a production-grade version would need — first in logic (v2 → v3), then in the actual physical hardware it would run on (v4). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
 
@@ -162,10 +162,10 @@ ignis-trace/
 
 ## Roadmap
 
-- [ ] Finalize and deploy audio classification model on the QRB2210 MPU
-- [ ] Implement gas-triggered thermal sweep escalation on the STM32 side
-- [ ] Build 8×13 LED matrix status display logic
-- [ ] Implement 433 MHz SX1276 LoRa 6-byte packet protocol
+- [] Finalize and deploy audio classification model on the QRB2210 MPU
+- [] Implement gas-triggered thermal sweep escalation on the STM32 side
+- [] Build 8×13 LED matrix status display logic
+- [] Implement 433 MHz SX1276 LoRa 6-byte packet protocol
 - [ ] Build ESP32 gateway (binary → JSON parsing over USB Serial)
 - [ ] Build Streamlit dashboard (live map + thermal angle + alert feed)
 - [ ] Design and print IP65-rated tree-mount enclosure
