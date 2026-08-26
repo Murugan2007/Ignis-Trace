@@ -1,6 +1,6 @@
 /*
  * ============================================================
- *  Ignis-Trace — v2 (FUTURE UPGRADE — NOT BUILT FOR CONTEST DEADLINE)
+ *  Ignis-Trace — v2 (FUSION UPGRADE)
  * ============================================================
  *  This sketch is a forward-looking design, kept in-repo as a
  *  roadmap item. It was NOT built or tested for the contest
