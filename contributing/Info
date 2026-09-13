@@ -1,0 +1,30 @@
+# Contributing to IgnisTrace
+
+Thank you for your interest in contributing to **IgnisTrace**! Whether you are optimizing on-device Edge AI models, refining firmware logic for the dual-core architecture, or testing hardware power efficiency, we welcome your inputs.
+
+---
+
+## Code of Conduct
+
+By participating in this project, you agree to maintain a respectful, constructive, and collaborative environment for all contributors. Please keep discussions focused on constructive technical feedback and problem-solving.
+
+---
+
+## How You Can Contribute
+
+We welcome contributions across several key areas:
+
+* **Embedded Firmware (C/C++):** Optimizing the STM32 MCU task scheduler, I2C sensor sampling routines, or dual-axis servo raster scanning algorithms[span_0](start_span)[span_0](end_span).
+* **Edge AI & Machine Learning:** Training, quantizing, and tuning 1D ConvNet / MobileNet audio classification models for chainsaw and fire-crackle detection in noisy environment profiles.
+* **Hardware & Circuit Engineering:** Refining power distribution circuits, PCB layouts, antenna designs, or IP65-rated ePTFE enclosure models.
+* **Documentation & Testing:** Expanding setup guides, documenting pinout changes, or submitting field verification test logs.
+
+---
+
+## Getting Started
+
+1. **Fork the Repository:** Create a personal copy of the project on GitHub.
+2. **Clone Locally:**
+   ```bash
+   git clone [https://github.com/your-username/IgnisTrace.git](https://github.com/your-username/IgnisTrace.git)
+   cd IgnisTrace
