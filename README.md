@@ -1,4 +1,4 @@
-# 🌲 Ignis-Trace
+# Ignis-Trace
 
 **An AI-powered "Black Box" for forests — catching wildfire threats at the ignition phase, before they become a satellite-visible disaster.**
 
@@ -37,7 +37,7 @@
 
 Wildfires are typically detected once smoke plumes are already visible from orbit — by then, the fire is established and containment is a much harder fight. Most detection systems are top-down (satellite, aerial) and reactive.
 
-**Ignis-Trace flips this.** It's a bottom-up, edge-computing sentry node deployed *in* the forest that senses the precursors of fire — atmospheric gas shifts, heat signatures, and acoustic threats like illegal machinery — and escalates through a verification cascade before firing an alert, giving rangers a head start instead of a wildfire.
+**Ignis-Trace flips this.** It's a bottom-up, edge-computing sentry node deployed *in* the forest that senses the precursors of fire , atmospheric gas shifts, heat signatures, and acoustic threats like illegal machinery , and escalates through a verification cascade before firing an alert, giving rangers a head start instead of a wildfire.
 
 ---
 
@@ -174,8 +174,8 @@ ESC-50 is studio-recorded, close-mic audio. Real forest deployment introduces ac
 - Set realistic confidence thresholds (85% on ESC-50 may drop to 75–80% on field data; retrain to recover to >85%)
 
 **Current Status:**
-- ✅ ESC-50 training complete; model achieves ~85% accuracy on held-out test set
-- ⚠️ **Field recording collection:** In progress; targeting 50+ verified samples per class by end of Phase 1 field validation
+-  ESC-50 training complete; model achieves ~85% accuracy on held-out test set
+-  **Field recording collection:** In progress; targeting 50+ verified samples per class by end of Phase 1 field validation
 
 ---
 
@@ -323,13 +323,13 @@ The design is intentionally modular so that forest services with different budge
 
 ## Current Status
 
-- 🧪 Gas sensing: **BME680**, ambient VOC polling on the STM32 side — operational for triggering only
-- 🌡️ Thermal sensing: **MLX90614** on a stepped micro-servo pyrometer sweep (triggered by gas-stage escalation) — functional, untested in field
-- 🔊 Acoustic verification: **INMP441** + Edge Impulse audio classification on the QRB2210 MPU — model in development, not yet deployed
-- 🖥️ **8×13 LED matrix** status display (baseline green checkmark / red alert): firmware ready
-- 📡 **433 MHz SX1276 LoRa** → ESP32 gateway → Streamlit dashboard pipeline: simulation console complete, real hardware integration in progress
-- 🖨️ **IP65-rated enclosure**, tree-mountable: design phase
-- 🛠️ Prototyping in Arduino App Lab, bridging Python-based TinyML (Qualcomm MPU) with real-time C++ sensor/servo control (STM32) via `Arduino_RouterBridge`
+-  Gas sensing: **BME680**, ambient VOC polling on the STM32 side — operational for triggering only
+-  Thermal sensing: **MLX90614** on a stepped micro-servo pyrometer sweep (triggered by gas-stage escalation) — functional, untested in field
+-  Acoustic verification: **INMP441** + Edge Impulse audio classification on the QRB2210 MPU — model in development, not yet deployed
+-  **8×13 LED matrix** status display (baseline green checkmark / red alert): firmware ready
+-  **433 MHz SX1278 LoRa** → ESP32 gateway → Streamlit dashboard pipeline: simulation console complete, real hardware integration in progress
+-  **IP65-rated enclosure**, tree-mountable: design phase
+-  Prototyping in Arduino App Lab, bridging Python-based TinyML (Qualcomm MPU) with real-time C++ sensor/servo control (STM32) via `Arduino_RouterBridge`
 
 ---
 
@@ -393,11 +393,11 @@ Based on field-deployment duty cycles and University of London conference resear
 
 | Spec | Value | Status | Notes |
 |---|---|---|---|
-| **Gas detection radius** | 5–50 m | ⚠️ Wind-dependent | VOC dispersal highly variable; downwind detection reliable, upwind near-zero |
-| **Thermal detection range** | 10–30 m | ⚠️ Hotspot-size dependent | MLX90614 field-of-view ~2°; larger fires detected further |
-| **Audio detection range** | 50–150 m | ⚠️ ESC-50 domain shift | Studio training data doesn't account for distance attenuation or wind masking |
+| **Gas detection radius** | 5–50 m | Wind-dependent | VOC dispersal highly variable; downwind detection reliable, upwind near-zero |
+| **Thermal detection range** | 10–30 m |  Hotspot-size dependent | MLX90614 field-of-view ~2°; larger fires detected further |
+| **Audio detection range** | 50–150 m |  ESC-50 domain shift | Studio training data doesn't account for distance attenuation or wind masking |
 | **LoRa TX range (open field)** | 5–10 km | ✓ Known | 433 MHz + dipole antenna (unverified in forest) |
-| **LoRa TX range (forest)** | ~500–2000 m | ⚠️ Foliage attenuation | 433 MHz heavily absorbed by tree canopy; unvalidated in target deployment |
+| **LoRa TX range (forest)** | ~500–2000 m |  Foliage attenuation | 433 MHz heavily absorbed by tree canopy; unvalidated in target deployment |
 
 ### Cascade Latency
 
@@ -474,10 +474,10 @@ The `firmware/` directory tracks the project's design evolution — not just the
 | Version | Sensors | Fusion Method | Status |
 |---|---|---|---|
 | **v1 — Original Design** | AMG8833 thermal camera + VL53L5CX ToF | — (single-sensor thresholding) | Reference only — superseded by budget constraints |
-| **Current — Contest Build** | BME680 gas + MLX90614 stepped pyrometer + INMP441 mic, on Uno Q | 3-tier cascade (Gas → Thermal → Audio) | ✅ In active development for submission |
-| **v2 — Fusion Upgrade** | Same current-build sensors | Decision-level (weighted-rule) fusion, generalized beyond the fixed 3-tier cascade | 🗺️ Designed, not built — post-contest roadmap |
-| **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware, Uno Q retained | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog | 🗺️ Architecture skeleton — scaling reference, unbuilt |
-| **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN, Uno Q architecture retained (MPU module swapped only) | v3 fusion philosophy, rebuilt against real sensor data | 📄 BOM + architecture document — deployment path, not built |
+| **Current — Contest Build** | BME680 gas + MLX90614 stepped pyrometer + INMP441 mic, on Uno Q | 3-tier cascade (Gas → Thermal → Audio) |  In active development for submission |
+| **v2 — Fusion Upgrade** | Same current-build sensors | Decision-level (weighted-rule) fusion, generalized beyond the fixed 3-tier cascade |  Designed, not built — post-contest roadmap |
+| **v3 — Industrial Logic Reference** | Same hobby sensors, health-aware, Uno Q retained | Probabilistic (naive-Bayes) fusion + self-diagnostics, fault-tolerant comms, watchdog |  Architecture skeleton — scaling reference, unbuilt |
+| **v4 — Industrial Hardware Reference** | FLIR thermal core + industrial mic array + LoRaWAN, Uno Q architecture retained (MPU module swapped only) | v3 fusion philosophy, rebuilt against real sensor data |  BOM + architecture document — deployment path, not built |
 
 **Why keep the unbuilt versions in the repo?** They document the actual engineering path: what the ideal design looked like (v1), what the actual contest submission does (current build's 3-tier cascade), and what a production-grade version would need — first in logic (v2 → v3), then in the actual physical hardware it would run on (v4). Judges and future contributors get the full picture, not just the snapshot that made the deadline.
 
