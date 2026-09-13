@@ -1,0 +1,223 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f5f5f5"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Ignis-Trace Hardware Wiring Schematic
+  </text>
+  <text x="600" y="55" font-size="12" text-anchor="middle" fill="#666">
+    Arduino UNO Q | BME680 | MLX90614 | INMP441 | SG90 Servo | SX1276 LoRa
+  </text>
+  
+  <!-- Main board (Arduino UNO Q) -->
+  <rect x="450" y="150" width="300" height="400" fill="#fff" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="600" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+    Arduino UNO Q
+  </text>
+  
+  <!-- STM32 MCU section -->
+  <rect x="470" y="200" width="130" height="60" fill="#e8f4f8" stroke="#0066cc" stroke-width="1" rx="3"/>
+  <text x="535" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#0066cc">STM32H743</text>
+  <text x="535" y="234" font-size="9" text-anchor="middle" fill="#0066cc">Real-Time MCU</text>
+  <text x="535" y="248" font-size="8" text-anchor="middle" fill="#666">D0-D13, A0-A7</text>
+  
+  <!-- QRB2210 MPU section -->
+  <rect x="630" y="200" width="130" height="60" fill="#f0e8f4" stroke="#9900cc" stroke-width="1" rx="3"/>
+  <text x="695" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#9900cc">QRB2210</text>
+  <text x="695" y="234" font-size="9" text-anchor="middle" fill="#9900cc">Linux MPU</text>
+  <text x="695" y="248" font-size="8" text-anchor="middle" fill="#666">Edge Impulse AI</text>
+  
+  <!-- Pin labels -->
+  <text x="470" y="290" font-size="10" font-weight="bold" fill="#333">I2C:</text>
+  <text x="470" y="310" font-size="9" fill="#666">D20 (SDA) →</text>
+  <text x="470" y="328" font-size="9" fill="#666">D21 (SCL) →</text>
+  
+  <text x="470" y="360" font-size="10" font-weight="bold" fill="#333">PWM:</text>
+  <text x="470" y="380" font-size="9" fill="#666">D9 → Servo</text>
+  
+  <text x="470" y="410" font-size="10" font-weight="bold" fill="#333">SPI:</text>
+  <text x="470" y="430" font-size="9" fill="#666">D11, D12, D13 →</text>
+  
+  <text x="630" y="290" font-size="10" font-weight="bold" fill="#333">I2S Audio:</text>
+  <text x="630" y="310" font-size="9" fill="#666">CLK/WS/SD ←</text>
+  <text x="630" y="328" font-size="9" fill="#666">INMP441</text>
+  
+  <!-- Power rails -->
+  <line x1="480" y1="540" x2="720" y2="540" stroke="#ff0000" stroke-width="2"/>
+  <text x="475" y="535" font-size="9" font-weight="bold" fill="#ff0000">+3.3V (Logic)</text>
+  
+  <line x1="480" y1="560" x2="720" y2="560" stroke="#000000" stroke-width="2"/>
+  <text x="475" y="555" font-size="9" font-weight="bold" fill="#000000">GND</text>
+  
+  <line x1="480" y1="520" x2="720" y2="520" stroke="#ff6600" stroke-width="2"/>
+  <text x="475" y="515" font-size="9" font-weight="bold" fill="#ff6600">+5V (Servo)</text>
+  
+  <!-- BME680 (Gas Sensor) -->
+  <g id="bme680">
+    <rect x="80" y="200" width="120" height="80" fill="#fff3cd" stroke="#ff9800" stroke-width="2" rx="3"/>
+    <text x="140" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">BME680</text>
+    <text x="140" y="238" font-size="9" text-anchor="middle" fill="#666">Gas/VOC Sensor</text>
+    <text x="140" y="254" font-size="8" text-anchor="middle" fill="#666">I2C @ 0x77</text>
+    <text x="140" y="268" font-size="8" text-anchor="middle" fill="#666">(Ultra-low power)</text>
+    
+    <!-- Connections -->
+    <line x1="200" y1="225" x2="470" y2="290" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="330" y="245" font-size="8" fill="#0066cc">SDA</text>
+    
+    <line x1="200" y1="245" x2="470" y2="310" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="330" y="265" font-size="8" fill="#0066cc">SCL</text>
+    
+    <line x1="200" y1="265" x2="450" y2="520" stroke="#ff0000" stroke-width="1.5"/>
+    <text x="320" y="370" font-size="8" fill="#ff0000">3.3V</text>
+    
+    <line x1="200" y1="275" x2="450" y2="560" stroke="#000000" stroke-width="1.5"/>
+    <text x="320" y="415" font-size="8" fill="#000">GND</text>
+  </g>
+  
+  <!-- MLX90614 (Thermal Sensor) -->
+  <g id="mlx90614">
+    <rect x="80" y="320" width="120" height="90" fill="#e8f4e8" stroke="#ff0000" stroke-width="2" rx="3"/>
+    <text x="140" y="342" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">MLX90614</text>
+    <text x="140" y="360" font-size="9" text-anchor="middle" fill="#666">IR Thermometer</text>
+    <text x="140" y="376" font-size="8" text-anchor="middle" fill="#666">I2C @ 0x5A</text>
+    <text x="140" y="390" font-size="8" text-anchor="middle" fill="#666">±2° FOV</text>
+    
+    <!-- Connections -->
+    <line x1="200" y1="345" x2="470" y2="290" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="330" y="310" font-size="8" fill="#0066cc">SDA</text>
+    
+    <line x1="200" y1="365" x2="470" y2="310" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="330" y="385" font-size="8" fill="#0066cc">SCL</text>
+    
+    <line x1="200" y1="385" x2="450" y2="520" stroke="#ff0000" stroke-width="1.5"/>
+    <text x="320" y="450" font-size="8" fill="#ff0000">3.3V</text>
+    
+    <line x1="200" y1="405" x2="450" y2="560" stroke="#000000" stroke-width="1.5"/>
+    <text x="320" y="480" font-size="8" fill="#000">GND</text>
+  </g>
+  
+  <!-- SG90 Servo (Thermal Sweep) -->
+  <g id="servo">
+    <rect x="920" y="200" width="120" height="80" fill="#fce8e8" stroke="#d32f2f" stroke-width="2" rx="3"/>
+    <text x="980" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">SG90 Servo</text>
+    <text x="980" y="238" font-size="9" text-anchor="middle" fill="#666">Thermal Sweep</text>
+    <text x="980" y="254" font-size="8" text-anchor="middle" fill="#666">PWM on D9</text>
+    <text x="980" y="268" font-size="8" text-anchor="middle" fill="#666">120° range</text>
+    
+    <!-- Connections -->
+    <line x1="920" y1="230" x2="750" y2="380" stroke="#ff9900" stroke-width="2"/>
+    <text x="835" y="300" font-size="8" fill="#ff9900">Signal (D9)</text>
+    
+    <line x1="920" y1="250" x2="750" y2="520" stroke="#ff0000" stroke-width="2"/>
+    <text x="835" y="380" font-size="8" fill="#ff0000">+5V</text>
+    
+    <line x1="920" y1="270" x2="750" y2="560" stroke="#000000" stroke-width="2"/>
+    <text x="835" y="410" font-size="8" fill="#000">GND</text>
+  </g>
+  
+  <!-- INMP441 Microphone -->
+  <g id="inmp441">
+    <rect x="920" y="320" width="120" height="90" fill="#f0e8f4" stroke="#7b1fa2" stroke-width="2" rx="3"/>
+    <text x="980" y="342" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">INMP441</text>
+    <text x="980" y="360" font-size="9" text-anchor="middle" fill="#666">MEMS Microphone</text>
+    <text x="980" y="376" font-size="8" text-anchor="middle" fill="#666">I2S PDM Audio</text>
+    <text x="980" y="390" font-size="8" text-anchor="middle" fill="#666">16 kHz, 16-bit</text>
+    
+    <!-- Connections (from QRB2210) -->
+    <line x1="920" y1="345" x2="760" y2="220" stroke="#9900cc" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="835" y="280" font-size="8" fill="#9900cc">I2S_CLK</text>
+    
+    <line x1="920" y1="365" x2="760" y2="230" stroke="#9900cc" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="835" y="300" font-size="8" fill="#9900cc">I2S_WS</text>
+    
+    <line x1="920" y1="385" x2="760" y2="240" stroke="#9900cc" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="835" y="312" font-size="8" fill="#9900cc">I2S_SD</text>
+    
+    <line x1="920" y1="350" x2="750" y2="520" stroke="#ff0000" stroke-width="1.5"/>
+    <text x="835" y="435" font-size="8" fill="#ff0000">3.3V</text>
+    
+    <line x1="920" y1="400" x2="750" y2="560" stroke="#000000" stroke-width="1.5"/>
+    <text x="835" y="475" font-size="8" fill="#000">GND</text>
+  </g>
+  
+  <!-- SX1276 LoRa Transceiver (optional) -->
+  <g id="sx1276">
+    <rect x="1000" y="470" width="130" height="90" fill="#e3f2fd" stroke="#0066cc" stroke-width="1.5" rx="3" stroke-dasharray="5,5"/>
+    <text x="1065" y="490" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">SX1276 LoRa</text>
+    <text x="1065" y="505" font-size="8" text-anchor="middle" fill="#666">(Optional)</text>
+    <text x="1065" y="520" font-size="8" text-anchor="middle" fill="#666">433 MHz TX/RX</text>
+    <text x="1065" y="533" font-size="8" text-anchor="middle" fill="#666">SPI: D11/D12/D13</text>
+    <text x="1065" y="546" font-size="8" text-anchor="middle" fill="#666">CS: D10, INT: D2</text>
+  </g>
+  
+  <!-- LED Matrix (built-in) -->
+  <g id="ledmatrix">
+    <rect x="1000" y="570" width="130" height="80" fill="#fff8f0" stroke="#ff8800" stroke-width="1.5" rx="3" stroke-dasharray="5,5"/>
+    <text x="1065" y="590" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">LED Matrix</text>
+    <text x="1065" y="605" font-size="8" text-anchor="middle" fill="#666">8×13 RGB</text>
+    <text x="1065" y="620" font-size="8" text-anchor="middle" fill="#666">(Built-in)</text>
+    <text x="1065" y="633" font-size="8" text-anchor="middle" fill="#666">Native GPIO</text>
+    <text x="1065" y="646" font-size="8" text-anchor="middle" fill="#666">No wiring</text>
+  </g>
+  
+  <!-- I2C Pull-up detail box -->
+  <g id="i2c-pullup">
+    <rect x="280" y="600" width="200" height="120" fill="#fff9e6" stroke="#666" stroke-width="1" rx="3"/>
+    <text x="380" y="618" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">I2C Bus Detail</text>
+    
+    <line x1="290" y1="630" x2="320" y2="630" stroke="#ff0000" stroke-width="2"/>
+    <text x="330" y="635" font-size="9" fill="#333">+3.3V</text>
+    
+    <line x1="290" y1="655" x2="320" y2="655" stroke="#ff0000" stroke-width="1"/>
+    <text x="330" y="660" font-size="8" fill="#666">[4.7k]</text>
+    
+    <line x1="295" y1="630" x2="295" y2="655" stroke="#ff0000" stroke-width="1"/>
+    <line x1="305" y1="630" x2="305" y2="655" stroke="#ff0000" stroke-width="1"/>
+    
+    <line x1="295" y1="655" x2="295" y2="670" stroke="#0066cc" stroke-width="1.5"/>
+    <text x="310" y="675" font-size="8" fill="#0066cc">SDA</text>
+    
+    <line x1="305" y1="655" x2="305" y2="670" stroke="#0066cc" stroke-width="1.5"/>
+    <text x="310" y="695" font-size="8" fill="#0066cc">SCL</text>
+    
+    <line x1="290" y1="700" x2="450" y2="700" stroke="#000" stroke-width="1.5"/>
+    <text x="365" y="715" font-size="8" fill="#333">All sensors share same bus</text>
+  </g>
+  
+  <!-- Power budget summary -->
+  <g id="power-summary">
+    <rect x="540" y="600" width="250" height="140" fill="#f5f5f5" stroke="#999" stroke-width="1" rx="3"/>
+    <text x="665" y="618" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">Power Budget Summary</text>
+    
+    <text x="550" y="640" font-size="8" fill="#333">Idle (98%): 0.8 mA</text>
+    <text x="550" y="655" font-size="8" fill="#333">Gas trigger: 1.5 mA × 15 sec</text>
+    <text x="550" y="670" font-size="8" fill="#333">Thermal sweep: 1.5 mA × 10 sec</text>
+    <text x="550" y="685" font-size="8" fill="#333">Audio + LoRa: 1.25 mA × 2 sec</text>
+    <text x="550" y="705" font-size="9" font-weight="bold" fill="#ff0000">Avg: ~1.0 mA</text>
+    <text x="550" y="725" font-size="9" font-weight="bold" fill="#0066cc">Battery life: 80–90 days</text>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <text x="30" y="720" font-size="9" font-weight="bold" fill="#333">Legend:</text>
+    
+    <line x1="30" y1="735" x2="60" y2="735" stroke="#0066cc" stroke-width="2"/>
+    <text x="70" y="740" font-size="8" fill="#333">I2C (digital communication)</text>
+    
+    <line x1="30" y1="755" x2="60" y2="755" stroke="#ff0000" stroke-width="2"/>
+    <text x="70" y="760" font-size="8" fill="#333">Power supply</text>
+    
+    <line x1="30" y1="775" x2="60" y2="775" stroke="#000" stroke-width="2"/>
+    <text x="70" y="780" font-size="8" fill="#333">Ground (GND)</text>
+    
+    <line x1="300" y1="735" x2="330" y2="735" stroke="#9900cc" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="340" y="740" font-size="8" fill="#333">I2S (audio stream)</text>
+    
+    <line x1="300" y1="755" x2="330" y2="755" stroke="#ff9900" stroke-width="2"/>
+    <text x="340" y="760" font-size="8" fill="#333">PWM (servo control)</text>
+    
+    <rect x="300" y="772" width="20" height="10" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="330" y="780" font-size="8" fill="#333">Optional component</text>
+  </g>
+</svg>
