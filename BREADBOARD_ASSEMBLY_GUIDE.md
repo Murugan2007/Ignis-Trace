@@ -4,7 +4,7 @@
 
 ---
 
-## 📦 What You Need
+##  What You Need
 
 ### Hardware
 - Arduino UNO Q (with USB power)
@@ -20,12 +20,11 @@
 2. **MLX90614** (Thermal) — I2C @ 0x5A
 3. **INMP441** (Microphone) — I2S (optional for breadboard)
 4. **SG90 Servo** (Thermal sweep) — PWM on D9
-5. **SSD1306 OLED** (Display) — I2C @ 0x3C
-6. **SX1276 LoRa** (Optional) — SPI (skip for now, add later)
-
+5. **SSD1306 OLED** (Optional) — I2C @ 0x3C
+6. **SX1278 LoRa** (Optional) — SPI
 ---
 
-## 🔌 Power Distribution (First)
+##  Power Distribution (First)
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -59,11 +58,11 @@ GND Rail:     All devices
    - OUT: New 3.3V rail on breadboard
 4. **All sensor grounds** → Common GND rail
 
-> ⚠️ **Critical:** Use separate 5V for servo if possible (external USB pack or battery). Don't draw 700 mA servo spike from UNO Q 5V. For breadboard test, you can get away with it if you power just the servo signal, not power.
+>  **Critical:** Use separate 5V for servo if possible (external USB pack or battery). Don't draw 700 mA servo spike from UNO Q 5V. For breadboard test, you can get away with it if you power just the servo signal, not power.
 
 ---
 
-## 📍 Pinout Summary (UNO Q → Breadboard)
+##  Pinout Summary (UNO Q → Breadboard)
 
 | Arduino Pin | Function | Breadboard Connection | Color |
 |---|---|---|---|
@@ -79,7 +78,7 @@ GND Rail:     All devices
 
 ---
 
-## 🔗 I2C Bus Wiring (All Sensors Share)
+##  I2C Bus Wiring (All Sensors Share)
 
 ```
 UNO Q D20 (SDA) ──[4.7kΩ pull-up]──┬── BME680 SDA
@@ -102,7 +101,7 @@ All sensors share GND → GND rail
 
 ---
 
-## 🔧 Physical Wiring Steps
+##  Physical Wiring Steps
 
 ### BME680 (Gas Sensor)
 ```
@@ -315,35 +314,35 @@ void loop() {
 
 ---
 
-## ✅ Assembly Checklist
+##  Assembly Checklist
 
-- [ ] **Power wiring complete**
-  - [ ] 5V from USB → breadboard 5V rail
-  - [ ] GND from UNO → breadboard GND rail
-  - [ ] 3.3V LDO regulator (IN from 5V, OUT to 3.3V rail)
+- [x] **Power wiring complete**
+  - [x] 5V from USB → breadboard 5V rail
+  - [x] GND from UNO → breadboard GND rail
+  - [x] 3.3V LDO regulator (IN from 5V, OUT to 3.3V rail)
 
-- [ ] **I2C Bus wired**
-  - [ ] D20 (SDA) → BME680, MLX90614, SSD1306 SDA (with 4.7kΩ pull-up)
-  - [ ] D21 (SCL) → BME680, MLX90614, SSD1306 SCL (with 4.7kΩ pull-up)
+- [x] **I2C Bus wired**
+  - [x] D20 (SDA) → BME680, MLX90614, SSD1306 SDA (with 4.7kΩ pull-up)
+  - [x] D21 (SCL) → BME680, MLX90614, SSD1306 SCL (with 4.7kΩ pull-up)
 
-- [ ] **Individual sensors**
-  - [ ] BME680: VCC, GND, SDA, SCL (CSB to GND)
-  - [ ] MLX90614: VCC, GND, SDA, SCL
-  - [ ] SSD1306: VCC, GND, SDA, SCL
-  - [ ] Servo: GND, 5V, Signal (D9)
+- [x] **Individual sensors**
+  - [x] BME680: VCC, GND, SDA, SCL (CSB to GND)
+  - [x] MLX90614: VCC, GND, SDA, SCL
+  - [x] SSD1306: VCC, GND, SDA, SCL
+  - [x] Servo: GND, 5V, Signal (D9)
 
-- [ ] **Serial monitor ready**
-  - [ ] USB connected to UNO Q
-  - [ ] Arduino IDE serial monitor @ 115200 baud
+- [x] **Serial monitor ready**
+  - [x] USB connected to UNO Q
+  - [x] Arduino IDE serial monitor @ 115200 baud
 
-- [ ] **Test sketch uploaded**
-  - [ ] Copy code above → Arduino IDE
-  - [ ] Verify + Upload
-  - [ ] Open serial monitor
+- [x] **Test sketch uploaded**
+  - [x] Copy code above → Arduino IDE
+  - [x] Verify + Upload
+  - [x] Open serial monitor
 
 ---
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### No I2C devices found
 1. Check that **D20/D21 are not shorted** to 5V or GND
@@ -377,7 +376,7 @@ void loop() {
 
 ---
 
-## 📝 Next Steps (After Breadboard Works)
+##  Next Steps (After Breadboard Works)
 
 1. **Confirm all sensors communicate** via test sketch
 2. **Work on Edge Impulse audio model** while hardware is running
@@ -387,15 +386,15 @@ void loop() {
 
 ---
 
-## 📸 Photos to Take
+##  Photos to Take
 
-- [ ] Breadboard overview (full layout)
-- [ ] I2C bus detail (pull-ups, sensor connections)
-- [ ] Servo mounted and wired
-- [ ] Serial monitor output (devices found)
+- [x] Breadboard overview (full layout)
+- [x] I2C bus detail (pull-ups, sensor connections)
+- [x] Servo mounted and wired
+- [x] Serial monitor output (devices found)
 
 Use these for the `/assets/` folder later.
 
 ---
 
-**Good luck! Post serial output if things don't work. 🎯**
+**Good luck! Post serial output if things don't work.**
