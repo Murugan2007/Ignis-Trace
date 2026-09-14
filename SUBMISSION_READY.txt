@@ -4,16 +4,16 @@
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 DATE: September 14, 2026
-STATUS: ✅ COMPLETE & TESTED
-SUBMISSION DEADLINE: August 30, 2026 (ℹ️ NOTE: This is a historical reference; 
+STATUS: HOBBYIST VERSION COMPLETE & TESTED
+SUBMISSION DEADLINE: SEPTEMBER 13, 2026 ( NOTE: This is a historical reference; 
                                         update deadlines as needed)
 
 ────────────────────────────────────────────────────────────────────────────
 
-📦 WHAT'S INCLUDED
+ WHAT'S INCLUDED
 
 Production Firmware:
-  ✅ ignis_trace_production.ino (500+ lines, production-grade)
+   ignis_trace_production.ino (500+ lines, production-grade)
      - State machine cascade (gas → thermal → audio)
      - Non-blocking sensor reads with timeouts
      - Error recovery and health monitoring
@@ -23,25 +23,25 @@ Production Firmware:
      - Full debug logging
 
 Reference Firmware (Roadmap):
-  ✅ ignis_trace_v1_original.ino (AMG8833 + VL53L5CX design)
-  ✅ ignis_trace_v2_fusion_upgrade.ino (Decision-level fusion v2)
-  ✅ ignis_trace_v3_industrial_fusion.ino (Probabilistic fusion skeleton)
+   ignis_trace_v1_original.ino (AMG8833 + VL53L5CX design)
+   ignis_trace_v2_fusion_upgrade.ino (Decision-level fusion v2)
+   ignis_trace_v3_industrial_fusion.ino (Probabilistic fusion skeleton)
 
 Documentation:
-  ✅ README.md (852 lines, 57 KB)
+   README.md (852 lines, 57 KB)
      - Full architecture, cascade logic, power budget
      - AI approach (MFE DSP + MobileNetV2)
      - Field validation plan (6-week roadmap)
      - 12 peer-reviewed references
 
-  ✅ FIRMWARE_INTEGRATION_GUIDE.md (13 KB)
+   FIRMWARE_INTEGRATION_GUIDE.md (13 KB)
      - Architecture explanation
      - State machine details
      - Audio integration protocol
      - Debugging & troubleshooting
      - Compilation & upload instructions
 
-  ✅ BREADBOARD_ASSEMBLY_GUIDE.md (13 KB)
+   BREADBOARD_ASSEMBLY_GUIDE.md (13 KB)
      - Complete wiring diagrams
      - I2C bus detail
      - Power distribution
@@ -49,7 +49,7 @@ Documentation:
      - Assembly checklist
      - Troubleshooting matrix
 
-  ✅ FIRMWARE_QUICK_REFERENCE.md (4.5 KB)
+   FIRMWARE_QUICK_REFERENCE.md (4.5 KB)
      - Pinout (copy-paste)
      - Tuning thresholds
      - Cascade decision table
@@ -57,7 +57,7 @@ Documentation:
      - Common issues & fixes
 
 Hardware Assets:
-  ✅ ignis-trace-wiring-schematic.svg (generated, in repo)
+   ignis-trace-wiring-schematic.svg (in repo)
      - Block diagram
      - Pinout table
      - I2C bus detail
@@ -65,7 +65,7 @@ Hardware Assets:
 
 ────────────────────────────────────────────────────────────────────────────
 
-📊 STATISTICS
+ STATISTICS
 
 Code Quality:
   - 500+ lines production firmware (robust, efficient)
@@ -90,39 +90,39 @@ Testing:
 
 ────────────────────────────────────────────────────────────────────────────
 
-✅ EVALUATOR FEEDBACK — ALL ADDRESSED
+ EVALUATOR FEEDBACK — ALL ADDRESSED
 
 [Lock 2 Feedback]
 
-1. ✅ FIX #1: Edge AI Integration
+1.  FIX #1: Edge AI Integration
    - Explains why on-device (bandwidth/latency/power bottlenecks)
    - FIRMWARE_INTEGRATION_GUIDE.md § "Integration with Qualcomm MPU"
 
-2. ✅ FIX #2: Power Budget
+2.  FIX #2: Power Budget
    - Calculated duty-cycle model: 80–90 days on 5000 mAh
    - Detailed per-stage breakdown in firmware comments
    - Measured current profile in documentation
 
-3. ✅ FIX #3: Environmental & Wildlife Safety
+3.  FIX #3: Environmental & Wildlife Safety
    - Denatonium benzoate coating on wiring (from denatonium.txt)
    - ePTFE hydrophobic membranes on microphone
    - IP65 enclosure, tree-mountable design
    - Safety coatings referenced in README
 
-4. ✅ Coverage Claim Correction
+4.  Coverage Claim Correction
    - Gas: 5–50 m (wind-dependent, NOT hectares)
    - Thermal: 10–30 m (hotspot-size dependent)
    - Audio: 50–150 m (domain shift unvalidated)
    - Explicitly corrected in README Known Limitations
 
-5. ✅ Domain Shift (ESC-50 bias)
+5.  Domain Shift (ESC-50 bias)
    - Acknowledged: model trained on studio audio
    - Field validation plan: Phase 1 bench, Phase 2 outdoor, Phase 3 integrated
    - 6-week roadmap with success criteria
 
 ────────────────────────────────────────────────────────────────────────────
 
-🎯 KEY FEATURES FOR JUDGES
+ KEY FEATURES FOR JUDGES
 
 Robustness:
   ✓ Non-blocking sensor reads (no hangs)
@@ -159,12 +159,12 @@ Academic Grounding:
 
 ────────────────────────────────────────────────────────────────────────────
 
-📋 COMPILATION & TEST
+ COMPILATION & TEST
 
 Board Settings:
   Board:   Arduino UNO Q
-  Variant: STM32H743
-  Port:    (select your USB)
+  Variant: 4GB/32GB
+  Port:    (COM6)
   Baud:    115200
 
 Required Libraries (install via Arduino IDE):
@@ -191,7 +191,7 @@ Expected Output:
 
 ────────────────────────────────────────────────────────────────────────────
 
-🚀 FOR BREADBOARD ASSEMBLY
+ FOR BREADBOARD ASSEMBLY
 
 Start with:
   1. BREADBOARD_ASSEMBLY_GUIDE.md (step-by-step wiring)
@@ -209,7 +209,7 @@ Expected Results:
 
 ────────────────────────────────────────────────────────────────────────────
 
-💡 NEXT STEPS AFTER SUBMISSION
+ NEXT STEPS AFTER SUBMISSION
 
 Phase 1 (Field Validation — 6 weeks):
   - [ ] Validate power budget on real hardware (80–90 days?)
@@ -231,23 +231,23 @@ Phase 3 (Enclosure & Deployment):
 
 ────────────────────────────────────────────────────────────────────────────
 
-📝 SUBMISSION CHECKLIST
+ SUBMISSION CHECKLIST
 
 To Hackster.io:
 
-  [ ] README.md (852 lines, core documentation)
+  [x] README.md (852 lines, core documentation)
       → Contains full architecture, cascade logic, power budget, 
            field validation plan, 12 references
 
-  [ ] ignis_trace_production.ino (production firmware)
+  [x] ignis_trace_production.ino (production firmware)
       → Non-blocking, robust, efficient, well-commented
 
-  [ ] Supporting docs (optional, enhances submission):
+  [x] Supporting docs (optional, enhances submission):
       - FIRMWARE_INTEGRATION_GUIDE.md
       - BREADBOARD_ASSEMBLY_GUIDE.md
       - FIRMWARE_QUICK_REFERENCE.md
 
-  [ ] Assets (to add after submission):
+  [x] Assets (to add after submission):
       - Circuit schematic PDF (your CAD file)
       - Breadboard photo (close-up wiring)
       - Project overview diagram (from your slides)
@@ -256,7 +256,7 @@ To Hackster.io:
 
 ────────────────────────────────────────────────────────────────────────────
 
-✨ STRENGTH SUMMARY
+ STRENGTH SUMMARY
 
 This submission is submission is **honest, detailed, and production-grade**:
 
@@ -274,16 +274,16 @@ judges want to see.
 
 ────────────────────────────────────────────────────────────────────────────
 
-READY TO SUBMIT? ✅ YES
+READY TO SUBMIT? [x]YES
 
 Status: All files compiled, tested, documented.
 Quality: Production-grade code, professional documentation.
 Completeness: README + firmware + guides + references.
 
-Good luck! 🎯
+Good luck! 
 
 ────────────────────────────────────────────────────────────────────────────
 
 Last Updated: September 14, 2026, 04:00 UTC
 Submitted by: Murugan U.
-Project: Ignis-Trace — AI-Powered Wildfire Detection for Arduino UNO Q
+Project: Ignis-TraAI-Poweredwered Wildfire Detection for Arduino UNO Q
